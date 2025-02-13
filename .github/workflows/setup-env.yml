@@ -17,4 +17,3 @@ jobs:
       run: |
         # Your commands to run the application
         echo "Using API key: $OPENAI_API_KEY"
-        
