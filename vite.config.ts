@@ -11,7 +11,6 @@ import { join } from 'path';
 
 dotenv.config();
 
-// Get detailed git info with fallbacks
 const getGitInfo = () => {
   try {
     return {
@@ -40,7 +39,6 @@ const getGitInfo = () => {
   }
 };
 
-// Read package.json with detailed dependency info
 const getPackageJson = () => {
   try {
     const pkgPath = join(process.cwd(), 'package.json');
@@ -110,7 +108,7 @@ export default defineConfig((config) => {
       tsconfigPaths(),
       chrome129IssuePlugin(),
       config.mode === 'production' && optimizeCssModules({ apply: 'build' }),
-    ],
+    ].filter(Boolean), // Ensure no falsy values are included
     envPrefix: [
       'VITE_',
       'OPENAI_LIKE_API_BASE_URL',
