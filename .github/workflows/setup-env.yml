@@ -1,0 +1,20 @@
+name: Setup Environment
+
+on: [push]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up environment
+      run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
+
+    - name: Run your application
+      run: |
+        # Your commands to run the application
+        echo "Using API key: $OPENAI_API_KEY"
+        
